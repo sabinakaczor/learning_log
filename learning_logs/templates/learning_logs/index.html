@@ -1,0 +1,19 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block header %}
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Monitoruj postępy w nauce</h1>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+  <h2>
+    <a href="{% url 'users:register' %}">Załóż konto</a>,
+    aby rozpocząć korzystanie z aplikacji Learning Log oraz wyświetlić listę poznawanych tematów.
+  </h2>
+  <h2>
+    Jeżeli nauczysz się czegoś nowego, to w odpowiednim temcie dodaj wpis podsumowujący to, czego się właśnie nauczyłeś.
+  </h2>
+{% endblock content %}

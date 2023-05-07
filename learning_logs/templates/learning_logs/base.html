@@ -1,0 +1,51 @@
+{% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learning Log</title>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container">
+        <a href="{% url 'learning_logs:index' %}">Learning Log</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'learning_logs:topics' %}">Tematy</a>
+            </li>
+          </ul>
+        </div>
+        <div class="float-end">
+          {% if user.is_authenticated %}
+            Witaj, {{ user.username }}!
+            <a href="{% url 'users:logout' %}">Wyloguj się</a>
+          {% else %}
+          <a href="{% url 'users:login' %}">Zaloguj się</a>
+          <a href="{% url 'users:register' %}">Rejestracja</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="page-header">
+        {% block header %}          
+        {% endblock header %}
+      </div>
+      <div>
+        {% block content %}
+        {% endblock content %}
+      </div>
+    </div>
+  </body>
+</html>

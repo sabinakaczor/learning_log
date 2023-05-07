@@ -1,0 +1,19 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap5 %}
+
+{% block header %}
+  <h2>Załóż nowe konto</h2>
+{% endblock header %}
+
+{% block content %}
+
+<form action="{% url 'users:register' %}" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    {% buttons %}
+    <button name="submit" class="btn btn-primary">Załóż konto</button>
+    {% endbuttons %}
+</form>
+  
+{% endblock content %}
